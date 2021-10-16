@@ -9,12 +9,12 @@ import (
 func main() {
 	ctx := context.Background()
 
-	ctxLogger := logger.Initialize(logger.LoggerConfig{
+	ctxLogger := logger.Initialize(logger.Config{
 		Level: "info",
 	})
 
 	// Put logger instance in context
-	ctx = context.WithValue(ctx, logger.LoggerCtxKey, ctxLogger)
+	ctx = context.WithValue(ctx, logger.CtxKey, ctxLogger)
 
 	foundLogger := logger.NewFromContextOrDefault(ctx)
 	foundLogger.Info("hiiiiiiiiiii")

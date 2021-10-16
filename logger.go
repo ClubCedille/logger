@@ -11,7 +11,9 @@ import (
 )
 
 const (
-	LoggerCtxKey = "logger"
+	// CtxKey -
+	// The context key for the Logger instance.
+	CtxKey = "logger"
 )
 
 var (
@@ -26,7 +28,9 @@ var (
 	syncOnce = sync.Once{}
 )
 
-type LoggerConfig struct {
+// Config -
+// The configuration used by a Logger.
+type Config struct {
 	Level     string
 	Output    io.Writer
 	Formatter log.Formatter
@@ -35,7 +39,7 @@ type LoggerConfig struct {
 // Initialize -
 // Initializes a new Logger from a given configuration.
 // If config is empty, default settings are used.
-func Initialize(config LoggerConfig) log.FieldLogger {
+func Initialize(config Config) log.FieldLogger {
 	syncOnce.Do(func() {
 		newLogger := &log.Logger{}
 		newLogger.SetNoLock()
@@ -83,7 +87,7 @@ func NewFromContextOrDefault(ctx context.Context) log.FieldLogger {
 	}
 
 	// Fetch logger from context
-	ctxVal := ctx.Value(LoggerCtxKey)
+	ctxVal := ctx.Value(CtxKey)
 	if ctxVal == nil {
 		return initDefaultLogger()
 	}
@@ -97,7 +101,7 @@ func NewFromContextOrDefault(ctx context.Context) log.FieldLogger {
 }
 
 func initDefaultLogger() log.FieldLogger {
-	Initialize(LoggerConfig{})
+	Initialize(Config{})
 	defaultLogger.Warn("logger not found in context, using default logger")
 	return defaultLogger
 }

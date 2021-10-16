@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	logger := logger.Initialize(logger.LoggerConfig{
+	logger := logger.Initialize(logger.Config{
 		Level: "debug",
 	})
 
