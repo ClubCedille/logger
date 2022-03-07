@@ -102,6 +102,5 @@ func NewFromContextOrDefault(ctx context.Context) log.FieldLogger {
 
 func initDefaultLogger() log.FieldLogger {
 	Initialize(Config{})
-	defaultLogger.Warn("logger not found in context, using default logger")
 	return defaultLogger
 }
