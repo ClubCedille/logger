@@ -17,13 +17,27 @@ const (
 )
 
 var (
-	defaultLogger    log.FieldLogger
-	defaultLevel     = log.InfoLevel
-	defaultOutput    = os.Stdout
-	defaultFormatter = &log.TextFormatter{
+	// CLIFormatter
+	//
+	// Default fomatter for CLIs such as tools used on local machines
+	CLIFormatter = &log.TextFormatter{
 		TimestampFormat: time.RFC3339,
 		FullTimestamp:   true,
 	}
+
+	// ServiceFormatter
+	//
+	// Default formatter for online services such as microservices
+	ServiceFormatter = &log.JSONFormatter{
+		// TimestampFormat: ,
+		TimestampFormat: "2006-01-02 15:04:05",
+		PrettyPrint:     true,
+	}
+
+	defaultLogger    log.FieldLogger
+	defaultLevel     = log.InfoLevel
+	defaultOutput    = os.Stdout
+	defaultFormatter = CLIFormatter
 
 	syncOnce = sync.Once{}
 )
