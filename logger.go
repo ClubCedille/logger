@@ -29,14 +29,15 @@ var (
 	//
 	// Default formatter for online services such as microservices
 	ServiceFormatter = &log.JSONFormatter{
-		// TimestampFormat: ,
-		TimestampFormat: "2006-01-02 15:04:05",
+		TimestampFormat: time.RFC3339,
 		PrettyPrint:     true,
 	}
 
-	defaultLogger    log.FieldLogger
-	defaultLevel     = log.InfoLevel
-	defaultOutput    = os.Stdout
+	defaultLogger log.FieldLogger
+	defaultLevel  = log.InfoLevel
+	defaultOutput = os.Stdout
+
+	// defaultFormatter is CLIFormatter
 	defaultFormatter = CLIFormatter
 
 	syncOnce = sync.Once{}
