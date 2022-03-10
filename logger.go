@@ -30,7 +30,6 @@ var (
 	// Default formatter for online services such as microservices
 	ServiceFormatter = &log.JSONFormatter{
 		TimestampFormat: time.RFC3339,
-		PrettyPrint:     true,
 	}
 
 	defaultLogger log.FieldLogger
