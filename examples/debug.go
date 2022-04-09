@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cguertin14/logger"
+	"github.com/clubcedille/logger"
 )
 
 func main() {

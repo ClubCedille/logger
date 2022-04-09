@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 
-	"github.com/cguertin14/logger"
+	"github.com/clubcedille/logger"
 )
 
 func main() {
